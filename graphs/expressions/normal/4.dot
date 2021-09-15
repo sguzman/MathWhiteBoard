@@ -1,0 +1,36 @@
+digraph exp_graph{
+    label = "Expression Simplification using Graphs, where (a,b,x) ∈ ℝ";
+    shape = "rectangle";
+    style = "filled";
+    
+    subgraph cluster_expression3 {
+        label = "4. Distribution rule for * over +";
+
+        plus3 [label="plus" shape="Mdiamond" style="filled" fillcolor="blue"];
+        times3 [label="times" shape="square" style="filled" fillcolor="red"];
+        times3n [label="times" shape="square" style="filled" fillcolor="red"];
+        #power2 [shape="pentagon" style="filled" fillcolor="green"];
+        #x3 [label="x" shape="doublecircle" style="filled" fillcolor="purple"];
+        x3n [label="x" shape="doublecircle" style="filled" fillcolor="purple"];
+        #a3 [label="a" shape="circle" style="filled" fillcolor="orange"];
+        a3n [label="a" shape="circle" style="filled" fillcolor="orange"];
+        b3 [label="b" shape="circle" style="filled" fillcolor="orange"];
+        b3n [label="b" shape="circle" style="filled" fillcolor="orange"];
+
+        plus3 -> times3;
+        plus3 -> b3;
+        plus3 -> times3n;
+
+        subgraph cluster_arg2 {
+            label = "Expression a(ax+b) becomes axa+ab";
+            style = "dashed";
+
+            times3 -> a3n;
+            times3 -> b3n;
+
+            times3n -> a3n;
+            times3n -> a3n;
+            times3n -> x3n;
+        }
+    }
+}

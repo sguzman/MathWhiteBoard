@@ -1,0 +1,37 @@
+digraph exp_graph{
+    label = "Expression Simplification using Graphs, where (a,b,x) ∈ ℝ";
+    shape = "rectangle";
+    style = "filled";
+    
+    subgraph cluster_expression2 {
+        label = "3. Self-insert of function - f(f(x))";
+
+        plus2 [label="plus" shape="Mdiamond" style="filled" fillcolor="blue"];
+        plus2n [label="plus" shape="Mdiamond" style="filled" fillcolor="blue"];
+        times2 [label="times" shape="square" style="filled" fillcolor="red"];
+        times2n [label="times" shape="square" style="filled" fillcolor="red"];
+        #power2 [shape="pentagon" style="filled" fillcolor="green"];
+        #x2 [label="x" shape="doublecircle" style="filled" fillcolor="purple"];
+        x2n [label="x" shape="doublecircle" style="filled" fillcolor="purple"];
+        a2 [label="a" shape="circle" style="filled" fillcolor="orange"];
+        a2n [label="a" shape="circle" style="filled" fillcolor="orange"];
+        b2 [label="b" shape="circle" style="filled" fillcolor="orange"];
+        b2n [label="b" shape="circle" style="filled" fillcolor="orange"];
+
+        plus2 -> times2;
+        plus2 -> b2;
+        times2 -> a2;
+
+        times2 -> plus2n;
+
+        subgraph cluster_arg {
+            label = "Function as argument";
+            style = "dashed";
+
+            plus2n -> times2n;
+            plus2n -> b2n;
+            times2n -> a2n;
+            times2n -> x2n;
+        }
+    }
+}

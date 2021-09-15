@@ -1,0 +1,21 @@
+digraph exp_graph{
+    label = "Expression Simplification using Graphs, where (a,b,x) ∈ ℝ";
+    shape = "rectangle";
+    style = "filled";
+    
+    subgraph cluster_expression1 {
+        label = "1. Initial Expression";
+
+        plus [label="plus" shape="Mdiamond" style="filled" fillcolor="blue"];
+        times [label="times" shape="square" style="filled" fillcolor="red"];
+        #power [shape="pentagon" style="filled" fillcolor="green"];
+        x [label="x" shape="doublecircle" style="filled" fillcolor="purple"];
+        a [label="a" shape="circle" style="filled" fillcolor="orange"];
+        b [label="b" shape="circle" style="filled" fillcolor="orange"];
+
+        plus -> times;
+        plus -> b;
+        times -> a;
+        times -> x;
+    }
+}

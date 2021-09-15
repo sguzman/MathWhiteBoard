@@ -1,0 +1,31 @@
+digraph exp_graph{
+    label = "Expression Simplification using Graphs, where (a,b,x) ∈ ℝ";
+    shape = "rectangle";
+    style = "filled";
+    
+    subgraph cluster_expression5 {
+        label = "5. Expression Normalized";
+
+        plus5 [label="plus" shape="Mdiamond" style="filled" fillcolor="blue"];
+        times5 [label="times" shape="square" style="filled" fillcolor="red"];
+        times5n [label="times" shape="square" style="filled" fillcolor="red"];
+        power5 [label="power" shape="pentagon" style="filled" fillcolor="green"];
+        x5n [label="x" shape="doublecircle" style="filled" fillcolor="purple"];
+        a5n [label="a" shape="circle" style="filled" fillcolor="orange"];
+        b5 [label="b" shape="circle" style="filled" fillcolor="orange"];
+        b5n [label="b" shape="circle" style="filled" fillcolor="orange"];
+        num5 [label="2" shape="circle" style="filled" fillcolor="cyan"];
+
+        plus5 -> times5;
+        plus5 -> b5;
+        plus5 -> times5n;
+
+        times5 -> a5n;
+        times5 -> b5n;
+
+        power5 -> a5n;
+        power5 -> num5;
+        times5n -> power5;
+        times5n -> x5n;
+    }
+}

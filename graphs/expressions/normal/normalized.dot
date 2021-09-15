@@ -136,7 +136,7 @@ digraph exp_graph{
     }
 
     subgraph cluster_expression5 {
-        label = "6. Expression Normalized";
+        label = "5. Expression Normalized";
 
         plus5 [label="plus" shape="Mdiamond" style="filled" fillcolor="blue"];
         times5 [label="times" shape="square" style="filled" fillcolor="red"];
@@ -161,3 +161,4 @@ digraph exp_graph{
         times5n -> x5n;
     }
 }
+

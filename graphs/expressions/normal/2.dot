@@ -1,0 +1,21 @@
+digraph exp_graph{
+    label = "Expression Simplification using Graphs, where (a,b,x) ∈ ℝ";
+    shape = "rectangle";
+    style = "filled";
+    
+    subgraph cluster_expression1_5 {
+        label = "2. Insertion Site Identified";
+
+        plus15 [label="plus" shape="Mdiamond" style="filled" fillcolor="blue"];
+        times15 [label="times" shape="square" style="filled" fillcolor="red"];
+        #power [shape="pentagon" style="filled" fillcolor="green"];
+        x15 [label="..." shape="doublecircle" style="filled" fillcolor="yellow"];
+        a15 [label="a" shape="circle" style="filled" fillcolor="orange"];
+        b15 [label="b" shape="circle" style="filled" fillcolor="orange"];
+
+        plus15 -> times15;
+        plus15 -> b15;
+        times15 -> a15;
+        times15 -> x15;
+    }
+}
