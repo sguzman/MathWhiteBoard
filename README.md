@@ -6,3 +6,5 @@ Here are my graphs that I have produced so far. Each relatively similar in prese
 
 ### Graphs
 - [Normalizing A Single Iteration of an Expression](graphs/expressions/normal/)
+
+![](graphs/expressions/normal/normalized.dot.png)
