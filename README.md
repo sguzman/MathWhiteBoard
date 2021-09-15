@@ -7,4 +7,4 @@ Here are my graphs that I have produced so far. Each relatively similar in prese
 ### Graphs
 - [Normalizing A Single Iteration of an Expression](graphs/expressions/normal/)
 
-![](https://github.com/sguzman/MathWhiteBoard/blob/main/normalized.dot.png?raw=true)
+![](https://raw.githubusercontent.com/sguzman/MathWhiteBoard/main/graphs/expressions/normal/output/normalized.dot.png)
