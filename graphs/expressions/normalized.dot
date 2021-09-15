@@ -1,0 +1,163 @@
+digraph exp_graph{
+    label = "Expression Simplification using Graphs, where (a,b,x) ∈ ℝ";
+    shape = "rectangle";
+    style = "filled";
+    
+    subgraph cluster_expression1 {
+        label = "1. Initial Expression";
+
+        plus [label="plus" shape="Mdiamond" style="filled" fillcolor="blue"];
+        times [label="times" shape="square" style="filled" fillcolor="red"];
+        #power [shape="pentagon" style="filled" fillcolor="green"];
+        x [label="x" shape="doublecircle" style="filled" fillcolor="purple"];
+        a [label="a" shape="circle" style="filled" fillcolor="orange"];
+        b [label="b" shape="circle" style="filled" fillcolor="orange"];
+
+        plus -> times;
+        plus -> b;
+        times -> a;
+        times -> x;
+    }
+
+    subgraph cluster_expression1_5 {
+        label = "2. Insertion Site Identified";
+
+        plus15 [label="plus" shape="Mdiamond" style="filled" fillcolor="blue"];
+        times15 [label="times" shape="square" style="filled" fillcolor="red"];
+        #power [shape="pentagon" style="filled" fillcolor="green"];
+        x15 [label="..." shape="doublecircle" style="filled" fillcolor="yellow"];
+        a15 [label="a" shape="circle" style="filled" fillcolor="orange"];
+        b15 [label="b" shape="circle" style="filled" fillcolor="orange"];
+
+        plus15 -> times15;
+        plus15 -> b15;
+        times15 -> a15;
+        times15 -> x15;
+    }
+
+    subgraph cluster_expression2 {
+        label = "3. Self-insert of function - f(f(x))";
+
+        plus2 [label="plus" shape="Mdiamond" style="filled" fillcolor="blue"];
+        plus2n [label="plus" shape="Mdiamond" style="filled" fillcolor="blue"];
+        times2 [label="times" shape="square" style="filled" fillcolor="red"];
+        times2n [label="times" shape="square" style="filled" fillcolor="red"];
+        #power2 [shape="pentagon" style="filled" fillcolor="green"];
+        #x2 [label="x" shape="doublecircle" style="filled" fillcolor="purple"];
+        x2n [label="x" shape="doublecircle" style="filled" fillcolor="purple"];
+        a2 [label="a" shape="circle" style="filled" fillcolor="orange"];
+        a2n [label="a" shape="circle" style="filled" fillcolor="orange"];
+        b2 [label="b" shape="circle" style="filled" fillcolor="orange"];
+        b2n [label="b" shape="circle" style="filled" fillcolor="orange"];
+
+        plus2 -> times2;
+        plus2 -> b2;
+        times2 -> a2;
+
+        times2 -> plus2n;
+
+        subgraph cluster_arg {
+            label = "Function as argument";
+            style = "dashed";
+
+            plus2n -> times2n;
+            plus2n -> b2n;
+            times2n -> a2n;
+            times2n -> x2n;
+        }
+    }
+
+    subgraph cluster_expression3 {
+        label = "4. Distribution rule for * over +";
+
+        plus3 [label="plus" shape="Mdiamond" style="filled" fillcolor="blue"];
+        times3 [label="times" shape="square" style="filled" fillcolor="red"];
+        times3n [label="times" shape="square" style="filled" fillcolor="red"];
+        #power2 [shape="pentagon" style="filled" fillcolor="green"];
+        #x3 [label="x" shape="doublecircle" style="filled" fillcolor="purple"];
+        x3n [label="x" shape="doublecircle" style="filled" fillcolor="purple"];
+        #a3 [label="a" shape="circle" style="filled" fillcolor="orange"];
+        a3n [label="a" shape="circle" style="filled" fillcolor="orange"];
+        b3 [label="b" shape="circle" style="filled" fillcolor="orange"];
+        b3n [label="b" shape="circle" style="filled" fillcolor="orange"];
+
+        plus3 -> times3;
+        plus3 -> b3;
+        plus3 -> times3n;
+
+        subgraph cluster_arg2 {
+            label = "Expression a(ax+b) becomes axa+ab";
+            style = "dashed";
+
+            times3 -> a3n;
+            times3 -> b3n;
+
+            times3n -> a3n;
+            times3n -> a3n;
+            times3n -> x3n;
+        }
+    }
+
+    subgraph cluster_expression4 {
+        label = "5. Simplify a*a to a^2";
+
+        plus4 [label="plus" shape="Mdiamond" style="filled" fillcolor="blue"];
+        times4 [label="times" shape="square" style="filled" fillcolor="red"];
+        times4n [label="times" shape="square" style="filled" fillcolor="red"];
+        power1 [label="power" shape="pentagon" style="filled" fillcolor="green"];
+        #x3 [label="x" shape="doublecircle" style="filled" fillcolor="purple"];
+        x4n [label="x" shape="doublecircle" style="filled" fillcolor="purple"];
+        #a4 [label="a" shape="circle" style="filled" fillcolor="orange"];
+        a4n [label="a" shape="circle" style="filled" fillcolor="orange"];
+        b4 [label="b" shape="circle" style="filled" fillcolor="orange"];
+        b4n [label="b" shape="circle" style="filled" fillcolor="orange"];
+        num [label="2" shape="circle" style="filled" fillcolor="cyan"];
+
+        plus4 -> times4;
+        plus4 -> b4;
+        plus4 -> times4n;
+
+        subgraph cluster_arg3 {
+            label = "";
+            style = "dashed";
+
+            times4 -> a4n;
+            times4 -> b4n;
+
+            subgraph cluster_power1 {
+                style = "dotted"
+
+                power1 -> a4n;
+                power1 -> num;
+                times4n -> power1;
+                times4n -> x4n;
+            }
+        }
+    }
+
+    subgraph cluster_expression5 {
+        label = "6. Expression Normalized";
+
+        plus5 [label="plus" shape="Mdiamond" style="filled" fillcolor="blue"];
+        times5 [label="times" shape="square" style="filled" fillcolor="red"];
+        times5n [label="times" shape="square" style="filled" fillcolor="red"];
+        power5 [label="power" shape="pentagon" style="filled" fillcolor="green"];
+        x5n [label="x" shape="doublecircle" style="filled" fillcolor="purple"];
+        a5n [label="a" shape="circle" style="filled" fillcolor="orange"];
+        b5 [label="b" shape="circle" style="filled" fillcolor="orange"];
+        b5n [label="b" shape="circle" style="filled" fillcolor="orange"];
+        num5 [label="2" shape="circle" style="filled" fillcolor="cyan"];
+
+        plus5 -> times5;
+        plus5 -> b5;
+        plus5 -> times5n;
+
+        times5 -> a5n;
+        times5 -> b5n;
+
+        power5 -> a5n;
+        power5 -> num5;
+        times5n -> power5;
+        times5n -> x5n;
+    }
+}
